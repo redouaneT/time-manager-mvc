@@ -1,0 +1,30 @@
+{% extends "template/layout.twig" %}
+{% block content %}
+  <div class="container" style="width: 50%;">
+        <section>
+            <header>
+                <h2>{{ activity.type }}</h2>
+            </header>
+            <div>
+                <div class="groupe-info">
+                    <small>Description</small>
+                    <span>{{ activity.description }}</span>
+                </div>
+                <div class="groupe-info">
+                    <small>Date de début d'activité</small>
+                    <span>{{ activity.starts_at }}</span>
+                </div>
+
+                <div class="groupe-info">
+                    <small>Date de fin d'activité</small>
+                    <span>{{ activity.ends_at }}</span>
+                </div>
+                <div class="groupe-info">
+                    <small>Créée le </small>
+                    <span>{{ activity.created_at }}</span>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+  

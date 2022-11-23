@@ -1,0 +1,31 @@
+
+{% extends 'template/layout.twig' %}
+{% block content %}
+    <div class="container" style="width: 50%;">
+        <section>
+            <header>
+                <h2>{{ client.first_name }} {{ client.last_name }}</h2>
+            </header>
+            <div>
+
+                <div class="groupe-info">
+                    <small>Courriel</small>
+                    <span>{{ client.email }}</span>
+                </div>
+                <div class="groupe-info">
+                    <small>Téléphone</small>
+                    <span>{{ client.phone }}</span>
+                </div>
+                <div class="groupe-info">
+                    <small>Adresse</small>
+                    <span>{{ client.address }}</span>
+                </div>
+
+                <div class="groupe-info">
+                    <small>Code postale</small>
+                    <span>{{ client.postal_code }}</span>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

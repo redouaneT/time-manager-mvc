@@ -1,0 +1,47 @@
+{% extends "template/layout.twig" %}
+{% block content %}
+  <h1>List des activities</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Type</th>
+                <th scope="col">Description</th>
+                <th scope="col">Début d'activité</th>
+                <th scope="col">Fin d'activité</th>
+                <th scope="col">Créée le</th>
+                <th></th>
+                <th></th>
+                <th>
+                    <a class="btn btn-secondary" type="button" href="{{ path }}activity/add">Ajouter</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+                	{% for activity in activities %}
+ 	
+                <tr>
+                    <th scope="row">{{ activity.id }}</th>
+                    <td>{{ activity.type }}</td>
+                    <td>{{ activity.description }}</td>
+                    <td>{{ activity.starts_at }}</td>
+                    <td>{{ activity.ends_at }}</td>
+                    <td>{{ activity.created_at }}</td>
+                    <td>
+                        <a class="btn btn-primary" type="button" href="{{ path }}activity/show/{{ activity.id }}">Voir</a>
+                    </td>
+
+                    <td><a class="btn btn-primary" type="button" href="{{ path }}activity/edit/{{ activity.id }}">Modifier</a></td>
+                    <td>
+                        <form action="{{ path }}activity/delete" method="post">
+                            <input type="hidden" name="id" value="{{ activity.id }}">
+                            <input class="btn btn-primary" type="submit" value="Supprimer" />
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+  	{% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+  

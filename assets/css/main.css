@@ -1,0 +1,397 @@
+/*
+
+
+#BF4E30
+
+#011936
+
+#88A0A8
+
+#32533D
+
+#FEDC97
+
+
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(32, 32, 32);
+    background-color: rgb(255, 255, 255);
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    grid-template-rows: 20vh 1fr 15vh;
+    grid-template-columns: 20vw 1fr;
+}
+
+body a {
+    text-decoration: none;
+    font-size: 16px;
+
+}
+
+body>header {
+    grid-area: header;
+    background-color: #BF4E30;
+}
+
+body>aside {
+    grid-area: sidebar;
+    overflow: hidden;
+    /* Resolves issue with <pre> elements forcing full width. */
+    background-color: rgb(211, 106, 106);
+}
+
+body>main {
+    grid-area: main;
+    background-color: rgb(167, 125, 125);
+}
+
+body>footer {
+    grid-area: footer;
+    background-color: rgb(106, 106, 53);
+}
+
+
+body>header {
+    display: flex;
+    justify-content: space-between;
+    max-height: 15vh;
+    padding: 24px;
+}
+
+body>header>div {
+    align-self: stretch;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body>header>div span {
+    font-size: 24px;
+    line-height: 1.12;
+    color: #32533D;
+    font-weight: bold;
+    width: fit-content;
+    padding-bottom: 3px;
+    border-bottom: 3px solid #32533D;
+}
+
+body>header picture {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    min-height: 10vh;
+    border-radius: 50%;
+}
+
+body>header img {
+    content: url(../../assets/imgs/logo.png);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    object-fit: cover;
+}
+
+body>header nav {
+    display: flex;
+    gap: 12px;
+}
+
+body>header nav a {
+    align-self: center;
+    background-color: #fff;
+    color: #0e0e0e;
+    font-size: 20px;
+    padding: 8px 12px;
+    border-radius: 3px;
+}
+
+body>header nav a:hover {
+    background-color: #0e0e0e;
+    color: #fff;
+}
+
+
+/*
+
+ASIDE
+
+*/
+
+/*
+
+
+#BF4E30
+
+#011936
+
+#88A0A8
+
+#32533D
+
+#FEDC97
+
+
+*/
+
+body>aside {
+    background-color: #e5e5e5;
+    margin: 24px;
+    color: #fff;
+
+}
+
+body>aside>header {
+    background-color: #32533D;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+}
+
+body>aside>nav {
+    padding: 24px;
+
+}
+
+body>aside>nav a {
+    background-color: rgb(201, 201, 201);
+    width: 100%;
+    display: inline-block;
+    color: #BF4E30;
+    font-size: 16px;
+    padding: 6px 12px;
+}
+
+body>aside>nav a:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+body>aside ul {
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+}
+
+body>aside>nav>ul {
+    gap: 12px;
+}
+
+body>aside>nav>ul>li {}
+
+body>aside>nav>ul>li>span {
+    display: inline-block;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+body>aside>nav>ul>li li {
+    margin: 0 24px;
+}
+
+body>aside>nav>ul>li ul {
+    gap: 8px;
+}
+
+/*
+
+Main
+*/
+
+
+
+
+
+body>main {
+    background-color: rgb(255, 255, 255);
+    margin: 24px 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body>main h2 {
+    font-size: 28px;
+}
+
+body>main .form-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body>main .form-container>form {
+    padding: 46px;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 6px;
+}
+
+body>main .form-group {
+    width: 500px;
+    background-color: rgb(225, 225, 225);
+    padding: 12px;
+    display: flex;
+    flex-flow: column;
+    gap: 12px;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+
+body>main .form-group>* {
+    display: block;
+    /* flex: 1; */
+}
+
+body>main .form-group>label {
+    font-size: 18px;
+    min-width: fit-content;
+    font-weight: bold;
+}
+
+body>main .form-group>label::after {
+    content: "";
+}
+
+body>main .form-group>input {
+    height: 35px;
+    min-width: 250px;
+    padding-left: 24px;
+}
+
+.container section {
+    background-color: #e5e5e5;
+    color: #333;
+    padding: 24px;
+}
+
+.container section>header {
+    background-color: #32533D;
+    color: #fff;
+    margin-bottom: 12px;
+    padding: 24px;
+}
+
+.container section>div {
+    background-color: #ffffff;
+    margin-bottom: 12px;
+    padding: 24px;
+
+}
+
+.container section>div>.groupe-info:nth-child(odd) {}
+
+.container section .groupe-info {
+    margin-bottom: 12px;
+}
+
+.container section .groupe-info small {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 24px;
+    color: #BF4E30;
+}
+
+.container section .groupe-info small::after {
+    content: " :";
+    color: #BF4E30;
+}
+
+.container section .groupe-info span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.container section>div {}
+
+
+.btn {
+    background-color: #32533D;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 12px;
+
+}
+
+/*
+
+table
+*/
+
+/* 
+.table th {
+    border: 1px solid rgb(151, 148, 148);
+    font-size: 16px;
+    min-width: 70px;
+    padding: 6px 8px;
+}
+
+.table td {
+    font-size: 14px;
+}
+
+.table tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.123);
+}
+
+.table .btn {
+    padding: 6px 8px;
+    background-color: #32533D;
+    border-color: #32533D;
+}
+
+.table .btn:hover {
+    background-color: #BF4E30;
+}
+
+.table .btn-secondary {
+    background-color: rgb(52, 47, 47);
+}
+
+.table .btn-secondary:hover {
+    color: #fff;
+} */
+
+/* Footer */
+
+body footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 20px;
+    color: #d9d9d9;
+    margin-top: 64px;
+}
+
+body footer>* {
+    margin-bottom: 12px;
+}
+
+.btn:hover {
+    background-color: #0a120d;
+}

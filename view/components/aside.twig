@@ -1,0 +1,89 @@
+{% macro aside() %}
+    <aside>
+        <header>
+            <picture>
+                <img src="" alt="" />
+            </picture>
+            <h2>
+                Admin
+            </h2>
+        </header>
+        <nav>
+            <ul>
+                <li>
+                    <span>Gestion des utilisateurs</span>
+                    <ul>
+                        <li>
+                            <a class="" href="{{ path }}user/add">
+                                Ajouter un utilisateur
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{{ path }}user/index">
+                                liste des utilisateur
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span>Gestion des clients</span>
+                    <ul>
+                        <li>
+                            <a href="{{ path }}client/add">Ajouter un client</a>
+                        </li>
+                        <li>
+                            <a href="{{ path }}client/index">
+                                liste des client
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span>Gestion des rendez-vous</span>
+                    <ul>
+                        <li>
+                            <a href="{{ path }}appointment/add">
+                                Ajouter un rendez vous
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path }}appointment/index">
+                                liste des rendez-vous
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span>Gestion des activities</span>
+                    <ul>
+                        <li>
+                            <a href="{{ path }}activity/add">
+                                Ajouter une activité
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path }}activity/index">
+                                liste des activities
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span>Notes</span>
+                    <ul>
+                        <li>
+                            <a href="{{ path }}note/add">
+                                Ajouter une note
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path }}note/index">
+                                liste des notes
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+{% endmacro %}

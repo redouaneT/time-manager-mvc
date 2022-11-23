@@ -1,0 +1,94 @@
+{% extends 'template/layout.twig' %}
+{% block content %}
+		<h1>
+			List des utilisateurs
+		</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">
+						#
+					</th>
+					<th scope="col">
+						Nom d'utilisateur
+					</th>
+					<th scope="col">
+						Nom
+					</th>
+					<th scope="col">
+						Prénom
+					</th>
+					<th scope="col">
+						Courriel
+					</th>
+					<th scope="col">
+						Password
+					</th>
+					<th scope="col">
+						Date de naissance
+					</th>
+					<th scope="col">
+						Adresse
+					</th>
+					<th scope="col">
+						Postal code
+					</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+					<th scope="col">
+						<a class="btn btn-secondary" type="button" href="{{ path }}user/add">Ajouter</a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<th scope="row">
+							{{ user.id }}
+						</th>
+						<td>
+							{{ user.username }}
+						</td>
+						<td>
+							{{ user.first_name }}
+						</td>
+						<td>
+							{{ user.last_name }}
+						</td>
+						<td>
+							{{ user.email }}
+						</td>
+						<td>
+							{{ user.password }}
+						</td>
+						<td>
+							{{ user.birthday }}
+						</td>
+						<td>
+							{{ user.adress }}
+						</td>
+						<td>
+							{{ user.postal_code }}
+						</td>
+						<td>
+							<a class="btn btn-primary" type="button" href="{{ path }}user/show/{{ user.id }}">
+								Voir
+							</a>
+						</td>
+						<td>
+							<a class="btn btn-primary" type="button" href="{{ path }}user/edit/{{ user.id }}">
+								Modifier
+							</a>
+						</td>
+
+						<td>
+							<form action="{{ path }}user/delete" method="post">
+								<input type="hidden" name="id" value="{{ user.id }}" />
+								<input class="btn btn-primary" type="submit" value="Supprimer" />
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "template/layout.twig" %}
+{% block content %}
+    <div class="form-container" style="width: 50%;">
+        <h2>Ajouter une activité</h2>
+        <form action="{{ path }}activity/store" method="post">
+            <!-- <input type="hidden" name="id" value="<?php echo $id; ?>"> -->
+            <div class="form-group">
+                <label for="type">Type d'activité</label>
+                <input type="text" class="form-control" id="type" name="type" placeholder="Type d'activité...">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" name="description" placeholder="Description...">
+            </div>
+            <div class="form-group">
+                <label for="starts_at">Date de début d'activité</label>
+                <input type="date" class="form-control" id="starts_at" name="starts_at">
+            </div>
+            <div class="form-group">
+                <label for="ends_at">Date de fin d'activité</label>
+                <input type="date" class="form-control" id="ends_at" name="ends_at">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Sauvegarder" /*>
+        </form>
+    </div>
+{% endblock %}
+

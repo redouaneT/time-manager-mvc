@@ -1,0 +1,26 @@
+{% extends "template/layout.twig" %}
+{% block content %}
+<div class="container" style="width: 50%;">
+        <section>
+            <header>
+                <h2>Rendez-vous pour le {{ appointment.date }}</h2>
+            </header>
+            <div>
+                <div class="groupe-info">
+                    <small>Date du rendez-vous</small>
+                    <span>{{ appointment.date }}</span>
+                </div>
+                <div class="groupe-info">
+                    <small>Description</small>
+                    <span>{{ appointment.description }}</span>
+                </div>
+
+                <div class="groupe-info">
+                    <small>Créée le </small>
+                    <span>{{ appointment.created_at }}</span>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+    

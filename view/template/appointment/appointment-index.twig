@@ -1,0 +1,41 @@
+{% extends "template/layout.twig" %}
+{% block content %}
+    <h1>List des rendez-vous</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Description</th>
+                <th scope="col">Ajouter le</th>
+                <th></th>
+                <th></th>
+                <th>
+                    <a class="btn btn-secondary" type="button" href="{{ path }}appointment/add">Ajouter</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+           	{% for appointment in appointments %}
+                <tr>
+                    <th scope="row">{{ appointment.id }}</th>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.description }}</td>
+                    <td>{{ appointment.created_at }}</td>
+                    <td>
+                        <a class="btn btn-primary" type="button" href="{{ path }}appointment/show/{{ appointment.id }}">Voir</a>
+                    </td>
+
+                    <td><a class="btn btn-primary" type="button" href="{{ path }}appointment/edit/{{ appointment.id }}">Modifier</a></td>
+                    <td>
+                        <form action="{{ path }}appointment/delete" method="post">
+                            <input type="hidden" name="id" value="{{ appointment.id }}">
+                            <input class="btn btn-primary" type="submit" value="Supprimer" />
+                        </form>
+                    </td>
+                </tr>
+ 		{% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+    

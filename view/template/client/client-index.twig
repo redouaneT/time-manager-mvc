@@ -1,0 +1,52 @@
+{% extends 'template/layout.twig' %}
+{% block content %}
+
+    <h1>List des clients</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Courriel</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Postal code</th>
+                <th></th>
+                <th></th>
+
+                <th></th>
+                <th>
+                    <a class="btn btn-secondary" type="button" href="{{ path }}client/add">Ajouter</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+           	{% for client in clients %}
+	
+                <tr>
+                    <th scope="row">{{ client.id }}</th>
+                    <td>{{ client.first_name }}</td>
+                    <td>{{ client.last_name }}</td>
+                    <td>{{ client.email }}</td>
+                    <td>{{ client.phone }}</td>
+                    <td>{{ client.adress}}</td>
+                    <td>{{ client.postal_code }}</td>
+                    <td>
+                        <a class="btn btn-primary" type="button" href="{{ path }}client/show/{{ client.id }}">Voir</a>
+                    </td>
+                    <td><a class="btn btn-primary" type="button" href="{{ path }}client/edit/{{ client.id }}">Modifier</a></td>
+
+                    <td>
+                        <form action="{{ path }}client/delete" method="post">
+                            <input type="hidden" name="id" value="{{ client.id }}">
+                            <input class="btn btn-primary" type="submit" value="Supprimer" />
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+             		{% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

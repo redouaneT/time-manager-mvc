@@ -1,0 +1,42 @@
+{% extends 'template/layout.twig' %}
+{% block content %}
+		<div class="container" style="width: 50%;">
+			<section>
+				<header>
+					<h2>
+						{{ user.username }}
+					</h2>
+				</header>
+				<div>
+					<div class="groupe-info">
+						<small>Nom</small>
+						<span>	{{ user.first_name }}</span>
+					</div>
+					<div class="groupe-info">
+						<small>Prénom</small>
+						<span>	{{ user.last_name }}</span>
+					</div>
+					<div class="groupe-info">
+						<small>Courriel</small>
+						<span>	{{ user.email }}</span>
+					</div>
+					<div class="groupe-info">
+						<small>Mot de passe</small>
+						<span>	{{ user.password }}</span>
+					</div>
+					<div class="groupe-info">
+						<small>Date de naissance</small>
+						<span>	{{ user.birthday }}</span>
+					</div>
+					<div class="groupe-info">
+						<small>Adresse</small>
+						<span>	{{ user.address }}</span>
+					</div>
+					<div class="groupe-info">
+						<small>Code postale</small>
+						<span>	{{ user.postal_code }}</span>
+					</div>
+				</div>
+			</section>
+		</div>
+{% endblock %}

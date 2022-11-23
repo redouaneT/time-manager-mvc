@@ -1,0 +1,38 @@
+{% extends 'template/layout.twig' %}
+{% block content %}
+    <div class="form-container" style="width: 50%;">
+        <form action="{{path}}client/update" method="post">
+            <input type="hidden" name="id" value="{{ client.id }}">
+            
+            <div class="form-group">
+                <label for="first_name">Nom</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ client.first_name }}" placeholder="Nom...">
+            </div>
+            <div class="form-group">
+                <label for="last_name">Prénom</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ client.last_name }}" placeholder="Prénom...">
+            </div>
+            <div class="form-group">
+                <label for="last_name">Courriel</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ client.email }}" placeholder="Courriel...">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Téléphone</label>
+                <input type="text" class="form-control" id="phone" name="phone" value="{{ client.phone }}" placeholder=" Téléphone...">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Adresse</label>
+                <input type="text" class="form-control" id="address" name="address" value="{{ client.address }}" placeholder="Adresse...">
+            </div>
+
+            <div class="form-group">
+                <label for="postal_code">Code postale</label>
+                <input type="text" class="form-control" id="postal_code" name="postal_code" value="{{ client.postal_code }}" placeholder="Code postale...">
+            </div>
+
+            <input class="btn btn-primary" type="submit" value="Sauvegarder" /*>
+        </form>
+    </div>
+{% endblock %}

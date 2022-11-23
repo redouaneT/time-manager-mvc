@@ -1,0 +1,14 @@
+{
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"prettier.documentSelectors": ["**/*.twig"],
+	// Make VS Code format files when you save them automatically
+	"editor.formatOnSave": true,
+
+	// Set the default code formatter
+	"[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+	// Set up some defaults
+	"prettier.tabWidth": 4,
+	"prettier.useTabs": true,
+	"prettier.singleQuote": true
+}

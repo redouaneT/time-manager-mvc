@@ -1,0 +1,41 @@
+{% extends 'template/layout.twig' %}
+{% block content %}
+    <h1>List des notes</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Contenu</th>
+                <th scope="col">Ajouter le</th>
+                <th></th>
+                <th>
+                    <a class="btn btn-secondary" type="button" href="{{ path }}note/add">Ajouter</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            	{% for note in notes %}
+
+                <tr>
+                    <th scope="row">{{ note.id }}</th>
+                    <td>{{ note.title }}</td>
+                    <td>{{ note.content }}</td>
+                    <td>{{ note.created_at }}</td>
+                    <td>
+                        <a class="btn btn-primary" type="button" href="{{ path }}note/show/{{ note.id }}">Voir</a>
+                    </td>
+
+                    <td><a class="btn btn-primary" type="button" href="{{ path }}note/edit/{{ note.id }}">Modifier</a></td>
+                    <td>
+                        <form action="{{ path }}note/delete" method="post">
+                            <input type="hidden" name="id" value="{{ note.id }}">
+                            <input class="btn btn-primary" type="submit" value="Supprimer" />
+                        </form>
+                    </td>
+                </tr>
+  
+                	{% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
