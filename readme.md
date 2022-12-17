@@ -34,6 +34,9 @@ Tout comme les rendez-vous, les utilisateurs peuvent créer et ajouter des activ
 L'application offre à ses utilisateur de créer et d'ajouter des notes sous forme de texte en entrant le titre de la note et son contenu.
 L'ensemble des notes serons affichées sur son tableau de board.
 
-## Envoyer des courriel
+## Envoi de courriels 
 
 Les utilisateurs peuvent contacter leurs clients directement à travers l'interface de TimeManager.
+
+
+Auteur: Redouane Taleb
