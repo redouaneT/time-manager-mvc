@@ -1,5 +1,5 @@
 #TimeManager - Gestionnaire de temps
-**--- Un projet dans le cadre de la formation académique ---**
+**--- Un projet dans le cadre d'une formation académique' ---**
 
 ## Description
 
