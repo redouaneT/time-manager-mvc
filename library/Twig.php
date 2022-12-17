@@ -10,6 +10,12 @@ class Twig
         $twig->addExtension(new \Twig\Extension\DebugExtension());
 
         $twig->addGlobal('path', 'http://localhost/timeManagerMvc/');
+
+        // Si une session est ouverte, on ajoute une variable global contenant la session
+        if (isset($_SESSION["username"])) {
+            $twig->addGlobal('session', $_SESSION);
+        }
+        
         echo $twig->render($template, $data);
     }
 }

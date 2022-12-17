@@ -1,18 +1,22 @@
 <?php
 RequirePage::requireModel('Model');
 RequirePage::requireModel('ModelNote');
+RequirePage::requireLibrary('Validation');
 
 class ControllerNote
 {
     public function __construct()
     {
-        $_POST["user_id"] = 1;
+        CheckSession::sessionAuth();
+        if (isset($_SESSION['user_id'])) {
+            $_POST['user_id'] = $_SESSION['user_id'];
+        }
     }
 
     public function index()
     {
         $note = new ModelNote;
-        $select =  $note->select();
+        $select =  $note->selectByColumnValue('user_id', $_SESSION['user_id'] );
         twig::render('template/note/note-index.twig', [
             'notes' => $select,
             'note_list' => "Liste de Note"
@@ -26,9 +30,19 @@ class ControllerNote
 
     public function store()
     {
-        $note = new ModelNote;
-        $insert =  $note->insert($_POST);
-        requirePage::redirectPage('note/index');
+            $validation = new Validation;
+            extract($_POST);
+            $validation->name('titre')->value($title)->required()->max(255);
+
+            if($validation->isSuccess()){
+                $note = new ModelNote;
+                $insert =  $note->insert($_POST);
+                requirePage::redirectPage('note/index');
+            }else{
+
+                $errors = $validation->displayErrors();
+                twig::render('template/note/note-add.twig', ['errors' => $errors, 'note' => $_POST]);
+            }
     }
 
     public function show($id)

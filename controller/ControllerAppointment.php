@@ -1,18 +1,23 @@
 <?php
 RequirePage::requireModel('Model');
 RequirePage::requireModel('ModelAppointment');
+RequirePage::requireLibrary('Validation');
 
 class ControllerAppointment
 {
     public function __construct()
     {
-        $_POST["user_id"] = 1;
+        CheckSession::sessionAuth();
+        if (isset($_SESSION['user_id'])) {
+            $_POST['user_id'] = $_SESSION['user_id'];
+        }
+
     }
 
     public function index()
     {
         $appointment = new ModelAppointment;
-        $select = $appointment->select();
+        $select = $appointment->selectByColumnValue('user_id', $_SESSION['user_id']);
         twig::render('template/appointment/appointment-index.twig', [
             'appointments' => $select,
             'appointment_list' => "Liste de Appointment"
@@ -27,9 +32,20 @@ class ControllerAppointment
     public function store()
     {
         // print_r($_POST);
-        $appointment = new ModelAppointment;
-        $insert = $appointment->insert($_POST);
-        requirePage::redirectPage('appointment/index');
+   
+        $validation = new Validation;
+        extract($_POST);
+        $validation->name('description')->value($description)->required();
+        $validation->name('date du rendez-vous')->value($date)->pattern('date_ymd')->required();
+
+        if($validation->isSuccess()){
+            $appointment = new ModelAppointment;
+            $insert = $appointment->insert($_POST);
+            requirePage::redirectPage('appointment/index');
+        }else{
+            $errors = $validation->displayErrors();
+            twig::render('template/appointment/appointment-add.twig', ['errors' => $errors, 'appointment' => $_POST]);
+        }
     }
 
     public function show($id)

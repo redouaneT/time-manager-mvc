@@ -1,0 +1,36 @@
+{% extends 'template/layout.twig' %}
+{% block content %}
+		<h1>
+			Journal de bord
+		</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">username du visiteur</th>
+					<th scope="col">Adresse IP</th>
+					<th scope="col">Date</th>
+					<th scope="col">page visitée</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for log in logs  %}
+					<tr>
+						<th scope="row">{{ log.id }}</th>
+						<td>{{ log.visitor_username }}</td>
+						<td>{{ log.visitor_ip }}</td>
+						<td>{{log.visited_at}}</td>
+						<td>{{log.visited_url}}</td>
+						<td>
+						</td>
+						<td>
+							<form action="{{ path }}log/delete" method="post">
+								<input type="hidden" name="id" value="{{ user.id }}" />
+								<input class="btn btn-primary" type="submit" value="Supprimer" />
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+{% endblock %}

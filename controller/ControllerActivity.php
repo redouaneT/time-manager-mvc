@@ -1,18 +1,24 @@
 <?php
 RequirePage::requireModel('Model');
 RequirePage::requireModel('ModelActivity');
+RequirePage::requireLibrary('Validation');
+
 
 class ControllerActivity
 {
     public function __construct()
     {
-        $_POST["user_id"] = 1;
+        CheckSession::sessionAuth();
+        if (isset($_SESSION['user_id'])) {
+            $_POST['user_id'] = $_SESSION['user_id'];
+        }
     }
 
     public function index()
     {
+
         $activity = new ModelActivity;
-        $select = $activity->select();
+        $select = $activity->selectByColumnValue('user_id', $_SESSION['user_id']);
         twig::render('template/activity/activity-index.twig', [
             'activities' => $select,
             'activity_list' => "Liste des Activities"
@@ -21,19 +27,32 @@ class ControllerActivity
 
     public function add()
     {
+
         twig::render('template/activity/activity-add.twig');
     }
 
     public function store()
     {
-        // print_r($_POST);
-        $activity = new ModelActivity;
-        $insert = $activity->insert($_POST);
-        requirePage::redirectPage('activity/index');
+       
+
+        $validation = new Validation;
+        extract($_POST);
+        $validation->name('type activité')->value($type)->required()->max(100);
+        $validation->name('début activité')->value($starts_at)->pattern('date_ymd')->required();
+
+        if($validation->isSuccess()){
+            $activity = new ModelActivity;
+            $insert = $activity->insert($_POST);
+            requirePage::redirectPage('activity/index');
+        }else{
+            $errors = $validation->displayErrors();
+            twig::render('template/activity/activity-add.twig', ['errors' => $errors, 'activity' => $_POST]);
+        }
     }
 
     public function show($id)
     {
+
         $activity = new ModelActivity;
         $selectActivity = $activity->selectId($id);
         twig::render('template/activity/activity-show.twig', ['activity' => $selectActivity]);
@@ -41,6 +60,7 @@ class ControllerActivity
 
     public function edit($id)
     {
+ 
         $activity = new ModelActivity;
         $selectActivity = $activity->selectId($id);
         twig::render('template/activity/activity-edit.twig', ['activity' => $selectActivity]);

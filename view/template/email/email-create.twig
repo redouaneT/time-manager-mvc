@@ -1,0 +1,26 @@
+{% extends "template/layout.twig" %}
+{% block content %}
+    <div class="form-container" style="width: 50%;">
+        <h2>Envoyer un courriel</h2>
+        <span class="message-response">{{ response|raw }}</span>
+        <form action="{{ path }}email/send" method="post">
+            <div class="form-group">
+                <label for="emailfrom">votre courriel</label>
+                <input type="emailfrom" class="form-control" id="emailfrom" name="emailfrom" value="{{email.emailfrom}}">
+            </div>
+            <div class="form-group">
+                <label for="emailto">Envoyer à </label>
+                <input type="emailto" class="form-control" id="emailto" name="emailto" value="{{email.emailto}}">
+            </div>
+            <div class="form-group">
+                <label for="subject">Objet</label>
+                <input type="text" class="form-control" id="subject" name="subject" value="{{email.subject}}">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" cols="30" rows="10" value="{{email.Message}}"></textarea>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Envoyer" /*>
+        </form>
+    </div>
+{% endblock %}

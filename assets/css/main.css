@@ -21,19 +21,16 @@
 
 body {
     min-height: 100vh;
+    position: relative;
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(32, 32, 32);
     background-color: rgb(255, 255, 255);
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-areas:
-        "header header"
-        "sidebar main"
-        "footer footer";
-    grid-template-rows: 20vh 1fr 15vh;
-    grid-template-columns: 20vw 1fr;
+    display: flex;
+    flex-flow: column;
+    
 }
+
 
 body a {
     text-decoration: none;
@@ -44,23 +41,20 @@ body a {
 body>header {
     grid-area: header;
     background-color: #BF4E30;
+    flex: 2;
+    
 }
 
-body>aside {
-    grid-area: sidebar;
-    overflow: hidden;
-    /* Resolves issue with <pre> elements forcing full width. */
-    background-color: rgb(211, 106, 106);
-}
-
-body>main {
+body main {
     grid-area: main;
     background-color: rgb(167, 125, 125);
+    flex:8;
 }
 
 body>footer {
     grid-area: footer;
     background-color: rgb(106, 106, 53);
+    flex: 2;
 }
 
 
@@ -125,6 +119,23 @@ body>header nav a:hover {
     background-color: #0e0e0e;
     color: #fff;
 }
+body>.container {
+    min-width: 100vw;
+    display: flex;
+}
+body>.container>aside {
+    flex:2;
+}
+
+.user-link{
+    background:none;
+    border:none;
+}
+.user-link:hover{
+    background:none;
+    border:none;
+}
+
 
 
 /*
@@ -149,14 +160,14 @@ ASIDE
 
 */
 
-body>aside {
+body aside {
     background-color: #e5e5e5;
     margin: 24px;
     color: #fff;
 
 }
 
-body>aside>header {
+body aside>header {
     background-color: #32533D;
     color: #fff;
     display: flex;
@@ -165,12 +176,12 @@ body>aside>header {
     min-height: 50px;
 }
 
-body>aside>nav {
+body aside>nav {
     padding: 24px;
 
 }
 
-body>aside>nav a {
+body aside>nav a {
     background-color: rgb(201, 201, 201);
     width: 100%;
     display: inline-block;
@@ -179,23 +190,23 @@ body>aside>nav a {
     padding: 6px 12px;
 }
 
-body>aside>nav a:hover {
+body aside>nav a:hover {
     background-color: rgb(255, 255, 255);
 }
 
-body>aside ul {
+body aside ul {
     list-style: none;
     display: flex;
     flex-flow: column;
 }
 
-body>aside>nav>ul {
+body aside>nav>ul {
     gap: 12px;
 }
 
-body>aside>nav>ul>li {}
+body aside>nav>ul>li {}
 
-body>aside>nav>ul>li>span {
+body aside>nav>ul>li>span {
     display: inline-block;
     font-size: 18px;
     color: rgb(0, 0, 0);
@@ -203,11 +214,11 @@ body>aside>nav>ul>li>span {
     margin-bottom: 12px;
 }
 
-body>aside>nav>ul>li li {
+body aside>nav>ul>li li {
     margin: 0 24px;
 }
 
-body>aside>nav>ul>li ul {
+body aside>nav>ul>li ul {
     gap: 8px;
 }
 
@@ -220,7 +231,7 @@ Main
 
 
 
-body>main {
+body main {
     background-color: rgb(255, 255, 255);
     margin: 24px 0;
     display: flex;
@@ -229,27 +240,27 @@ body>main {
     align-items: center;
 }
 
-body>main h2 {
+body main h2 {
     font-size: 28px;
 }
 
-body>main .form-container {
+body main .form-container {
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
 }
 
-body>main .form-container>form {
+body main .form-container>form {
     padding: 46px;
     width: 100%;
     display: flex;
-    flex-flow: column;
+    flex-flow: column wrap;
     align-items: center;
     gap: 6px;
 }
 
-body>main .form-group {
+body main .form-group {
     width: 500px;
     background-color: rgb(225, 225, 225);
     padding: 12px;
@@ -260,22 +271,22 @@ body>main .form-group {
     justify-content: space-between;
 }
 
-body>main .form-group>* {
+body main .form-group>* {
     display: block;
     /* flex: 1; */
 }
 
-body>main .form-group>label {
+body main .form-group>label {
     font-size: 18px;
     min-width: fit-content;
     font-weight: bold;
 }
 
-body>main .form-group>label::after {
+body main .form-group>label::after {
     content: "";
 }
 
-body>main .form-group>input {
+body main .form-group>input {
     height: 35px;
     min-width: 250px;
     padding-left: 24px;
@@ -380,12 +391,15 @@ table
 /* Footer */
 
 body footer {
+    width: 100vw;
+    position: absolute;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     font-size: 20px;
     color: #d9d9d9;
     margin-top: 64px;
+    bottom: 0;
 }
 
 body footer>* {
@@ -394,4 +408,120 @@ body footer>* {
 
 .btn:hover {
     background-color: #0a120d;
+}
+
+/**
+* 
+*Page 404 not found
+
+*/
+@import url("https://fonts.googleapis.com/css?family=Merriweather+Sans");
+main {
+  width: 100vw;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Merriweather Sans", sans-serif;
+}
+main #errorText {
+  font-size: 22px;
+  margin: 14px 0;
+}
+main #errorLink {
+  font-size: 20px;
+  padding: 12px;
+  border: 1px solid;
+  color: #000;
+  background-color: transparent;
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+}
+main #errorLink:hover, main #errorLink:active {
+  color: #fff;
+  background: #000;
+}
+main #g6219 {
+  transform-origin: 85px 4px;
+  -webkit-animation: an1 12s 0.5s infinite ease-out;
+          animation: an1 12s 0.5s infinite ease-out;
+}
+
+@-webkit-keyframes an1 {
+  0% {
+    transform: rotate(0);
+  }
+  5% {
+    transform: rotate(3deg);
+  }
+  15% {
+    transform: rotate(-2.5deg);
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  35% {
+    transform: rotate(-1.5deg);
+  }
+  45% {
+    transform: rotate(1deg);
+  }
+  55% {
+    transform: rotate(-1.5deg);
+  }
+  65% {
+    transform: rotate(2deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+  85% {
+    transform: rotate(2.5deg);
+  }
+  95% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes an1 {
+  0% {
+    transform: rotate(0);
+  }
+  5% {
+    transform: rotate(3deg);
+  }
+  15% {
+    transform: rotate(-2.5deg);
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  35% {
+    transform: rotate(-1.5deg);
+  }
+  45% {
+    transform: rotate(1deg);
+  }
+  55% {
+    transform: rotate(-1.5deg);
+  }
+  65% {
+    transform: rotate(2deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+  85% {
+    transform: rotate(2.5deg);
+  }
+  95% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
 }

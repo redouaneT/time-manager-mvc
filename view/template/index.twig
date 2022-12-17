@@ -1,27 +1,6 @@
-  {% import "components/head.twig" as head %}
-  {% import "components/aside.twig" as aside %}
-  {% import "components/nav.twig" as nav %}
-  {% import "components/footer.twig" as footer %}
-<!DOCTYPE html>
-<html lang="en">
-
-{{head.head('welcome')}}
-<body>
-    <header>
-        <div class="logo">
-            <picture>
-                <img src="" alt="logo">
-            </picture>
-            <span>Time-Manager</span>
-        </div>
-        {{nav.nav()}}
-    </header>
-            {{aside.aside()}}
-    <main>
+{% extends "template/layout.twig" %}
+{% block content %}
+    <div>
         <h1>Welcome</h1>
-    </main>
-
-         {{footer.footer()}}
-</body>
-
-</html>
+    </div>
+{% endblock %}

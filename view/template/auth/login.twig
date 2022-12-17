@@ -1,0 +1,21 @@
+{% extends "template/layout.twig" %}
+{% block content %}
+    <div class="form-container" style="width: 50%;">
+        <h2>Connecter</h2>
+        <span class="error">{{ errors|raw }}</span>
+        <form action="{{ path }}user/auth" method="post">
+            <!-- <input type="hidden" name="id" value="<?php echo $id; ?>"> -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" value="{{data.username}}" placeholder="Username...">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" value="{{data.password}}">
+            </div>
+
+            <input class="btn btn-primary" type="submit" value="Connecter" /*>
+
+        </form>
+    </div>
+{% endblock %}

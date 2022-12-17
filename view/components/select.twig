@@ -1,0 +1,16 @@
+{% macro select(data, title, name, id) %}
+    <label for="{{name}}">{{title}}</label>
+    {% if data is null %}
+       {% set disabled = 'disabled' %}
+       {% else %}
+         {% set disabled = '' %}
+    {% endif %}
+    <select class="form-control" id="{{name}}" name="{{name}}" {{disabled}}>
+            <option value="-1" disabled checked>--- Choisir un {{title}} ---</option>
+        {% if data is not null %}
+            {% for eData in data %}
+                <option value="{{eData.id}}"  {% if eData.id == id %} selected {% endif %}>{{eData.name}} </option>
+            {% endfor %}
+        {% endif %}
+    </select>
+{% endmacro %}

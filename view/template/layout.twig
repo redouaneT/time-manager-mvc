@@ -2,28 +2,36 @@
   {% import "components/aside.twig" as aside %}
   {% import "components/nav.twig" as nav %}
   {% import "components/footer.twig" as footer %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 {{head.head('welcome')}}
 <body>
     <header>
-        <div class="logo">
-            <picture>
-                <img src="" alt="logo">
-            </picture>
-            <span>Time-Manager</span>
-        </div>
-        {{nav.nav()}}
+        <a href="{{path}}/">
+            <div class="logo">
+                <picture>
+                    <img src="" alt="logo">
+                </picture>
+                <span>Time-Manager</span>
+            </div>
+        </a>
+        {{nav.nav(session)}}
     </header>
-            {{aside.aside()}}
-    <main>
+    <div class="container">
+
+        {% if  session %}
+            {{aside.aside(session)}}
+        {% endif %}
+
+        <main>
             {% block content %}
 
             {% endblock %}
-    </main>
-
-         {{footer.footer()}}
+        </main>
+    </div>
+    {{footer.footer()}}
 </body>
 
 </html>

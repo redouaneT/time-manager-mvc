@@ -1,10 +1,27 @@
 
- {% macro nav() %}
+ {% macro nav(session) %}
     <nav>
-        <a href="{{ path }}/">Accueil</a>
-        <a href="#">rendez-vous</a>
-        <a href="#">activities</a>
-        <a href="#">Notes</a>
-        <a href="#">Mon profil</a>
+        {% if session.username %}
+            <a class="user-link" href="{{ path }}/">{{session.username}}</a>
+        {% endif %}
+     
+        {% if  session %}
+            {% if  session.privilege_id == '1' %}
+                <a href="{{ path }}/user/index">Utilisateurs</a>
+            {% endif %}
+            <a href="{{ path }}/client/index">Clients</a>
+            <a href="{{ path }}/appointment/index">Rendez-vous</a>
+            <a href="{{ path }}/activity/index">Activities</a>
+            <a href="{{ path }}/note/index">Notes</a>
+            <a href="{{ path }}/email/create">Envoyer message</a>
+               {% if  session.privilege_id == '1' %}
+                   <a href="{{ path }}/log/index">Journal</a>
+               {% endif %}
+            <a href="{{ path }}/user/logout">Se déconnecter</a>
+            {% else %}
+                <a href="{{ path }}/">Accueil</a>
+                <a href="{{ path }}/user/login">Se Connecter</a>
+                <a href="{{ path }}/user/add">S'enregestrer</a>
+        {% endif %}
     </nav>
 {% endmacro %}

@@ -1,6 +1,6 @@
+{% import "components/select.twig" as select %}
 {% extends "template/layout.twig" %}
 {% block content %}
-
     <div class="form-container" style="width: 50%;">
         <form action="{{path}}user/update" method="post">
             <input type="hidden" name="id" value="{{ user.id }}">
@@ -21,10 +21,6 @@
                 <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" placeholder="Courriel...">
             </div>
             <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" class="form-control" id="password" name="password" value="{{ user.password }}" placeholder="Mot de passe...">
-            </div>
-            <div class="form-group">
                 <label for="birthday">Date de naissance</label>
                 <input type="date" class="form-control" id="birthday" name="birthday" value="{{ user.birthday }}" placeholder="Date de naissance...">
             </div>
@@ -32,10 +28,18 @@
                 <label for="address">Adresse</label>
                 <input type="text" class="form-control" id="address" name="address" value="{{ user.address }}" placeholder="Adresse...">
             </div>
-
+            <div class="form-group">
+                {{select.select(countries, 'Pays', 'country', user.country_id)}}
+            </div>
+            <div class="form-group">
+                {{select.select(cities, 'Ville', 'city_id', user.city_id )}}
+            </div>
             <div class="form-group">
                 <label for="postal_code">Code postale</label>
                 <input type="text" class="form-control" id="postal_code" name="postal_code" value="{{ user.postal_code }}" placeholder="Code postale...">
+            </div>
+             <div class="form-group">
+                {{select.select(privileges, 'Privilége', 'privilege_id', user.privilege_id )}}
             </div>
 
             <input class="btn btn-primary" type="submit" value="Sauvegarder" /*>

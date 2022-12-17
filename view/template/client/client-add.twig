@@ -1,8 +1,12 @@
+
 {% extends "template/layout.twig" %}
+
 {% block content %}
+    {% import "components/select.twig" as select %}
 
     <div class="form-container" style="width: 50%;">
         <h2>Ajouter un client</h2>
+        <span class="error">{{ errors|raw }}</span>
         <form action="{{ path }}client/store" method="post">
             <!-- <input type="hidden" name="id" value="<?php echo $id; ?>"> -->
             <div class="form-group">
@@ -22,15 +26,19 @@
                 <input type="text" class="form-control" id="phone" name="phone" placeholder="Téléphone...">
             </div>
             <div class="form-group">
-                <label for="address">Adresse</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Courriel...">
+                <label for="address">Addresse</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="addresse...">
             </div>
-
+            <div class="form-group">
+                {{select.select(countries, title, 'country')}}
+            </div>
+            <div class="form-group">
+                  {{select.select(null, 'Ville', 'city_id' )}}
+            </div>
             <div class="form-group">
                 <label for="postal_code">Code postale</label>
                 <input type="text" class="form-control" id="postal_code" name="postal_code" placeholder="Code postale...">
             </div>
-
             <input class="btn btn-primary" type="submit" value="Sauvegarder" /*>
         </form>
     </div>
